@@ -1,0 +1,25 @@
+# Compiled Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+main
+
+# Test binaries
+*.test
+*.out
+
+# Environment variables
+.env
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Go workspace files
+go.work
+go.work.sum
+
+

@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "eb345678-1234-4567-890a-abcdef123456",
+		"name": "Mini Lead CRM",
+		"description": "API endpoints for the Mini Lead CRM assessment.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Leads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/leads",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Lead By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/leads/YOUR_LEAD_ID_HERE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads",
+						"YOUR_LEAD_ID_HERE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Lead",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Hyper User\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"1234567890\",\n    \"source\": \"website\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/leads",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Lead Status",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"CONTACTED\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/leads/YOUR_LEAD_ID_HERE/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads",
+						"YOUR_LEAD_ID_HERE",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Entire Lead",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Name\",\n    \"email\": \"updated@example.com\",\n    \"phone\": \"1112223333\",\n    \"source\": \"referral\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/leads/YOUR_LEAD_ID_HERE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads",
+						"YOUR_LEAD_ID_HERE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Lead",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/leads/YOUR_LEAD_ID_HERE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads",
+						"YOUR_LEAD_ID_HERE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Create Leads",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"Bulk Lead 1\", \n    \"email\": \"bulk1@test.com\"\n  },\n  {\n    \"name\": \"Bulk Lead 2\", \n    \"email\": \"invalid-email-format\"\n  }, \n  {\n    \"name\": \"Bulk Lead 3\", \n    \"email\": \"bulk3@test.com\"\n  }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/leads/bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leads",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

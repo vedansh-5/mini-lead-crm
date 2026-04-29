@@ -6,6 +6,8 @@ import (
 	"mini-lead-crm/internal/cache"
 	"mini-lead-crm/internal/models"
 	"mini-lead-crm/internal/repository"
+
+	"github.com/gin-gonic/gin/binding"
 )
 
 type LeadService struct {
@@ -91,6 +93,16 @@ func (s *LeadService) BulkCreate(leads []models.Lead) map[string]interface{} {
 	var results []map[string]interface{}
 
 	for i, lead := range leads {
+		// validate the individual lead
+		if err := binding.Validator.ValidateStruct(&lead); err != nil {
+			failed++
+			results = append(results, map[string]interface{}{
+				"index":   i,
+				"success": false,
+				"error":   err.Error(),
+			})
+			continue // Skip creating invalid lead
+		}
 		err := s.CreateLead(&lead)
 
 		if err != nil {
@@ -123,7 +135,17 @@ func (s *LeadService) BulkUpdate(leads []models.Lead) map[string]interface{} {
 	successful := 0
 	failed := 0
 	var results []map[string]interface{}
-	for _, lead := range leads {
+	for i, lead := range leads {
+		// validate the individual lead
+		if err := binding.Validator.ValidateStruct(&lead); err != nil {
+			failed++
+			results = append(results, map[string]interface{}{
+				"index":   i,
+				"success": false,
+				"error":   err.Error(),
+			})
+			continue // Skip creating invalid lead
+		}
 		err := s.UpdateLead(lead.ID.String(), &lead)
 		if err != nil {
 			failed++

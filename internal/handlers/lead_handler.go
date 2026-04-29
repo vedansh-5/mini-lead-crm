@@ -2,6 +2,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"mini-lead-crm/internal/models"
 	"mini-lead-crm/internal/repository"
 	"mini-lead-crm/internal/services"
@@ -112,7 +113,7 @@ func (h *LeadHandler) DeleteLead(c *gin.Context) {
 func (h *LeadHandler) BulkCreateLeads(c *gin.Context) {
 	var leads []models.Lead
 
-	if err := c.ShouldBindJSON(&leads); err != nil {
+	if err := json.NewDecoder(c.Request.Body).Decode(&leads); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid array payload"})
 		return
 	}
@@ -125,7 +126,7 @@ func (h *LeadHandler) BulkCreateLeads(c *gin.Context) {
 func (h *LeadHandler) BulkUpdateLeads(c *gin.Context) {
 	var leads []models.Lead
 
-	if err := c.ShouldBindJSON(&leads); err != nil {
+	if err := json.NewDecoder(c.Request.Body).Decode(&leads); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid array payload"})
 		return
 	}

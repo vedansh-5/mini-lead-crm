@@ -32,7 +32,7 @@ type Lead struct {
 
 // beforeCreate generates a new UUID for the lead
 
-func (lead *Lead) beforeCreate(tx *gorm.DB) (err error) {
+func (lead *Lead) BeforeCreate(tx *gorm.DB) (err error) {
 	lead.ID = uuid.New()
 	return
 }

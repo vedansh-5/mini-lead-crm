@@ -44,7 +44,7 @@ Redis caches the `GET /leads/:id` endpoint for 10 minutes. The cache is invalida
 - **Single Redis Instance:** Used a single Redis container for simplicity instead of a highly available cluster.
 
 **What I'd do differently at scale**
-- Implement message queues (e.g., RabbitMQ or Kafka) for bulk processing, so bulk requests are processed asynchronously in the background.
+- Implement message queues (e.g. Kafka) for bulk processing, so bulk requests are processed asynchronously in the background.
 - Add robust pagination, sorting, and filtering to the `GET /leads` endpoint to prevent fetching massive amounts of data at once.
 
 **Handling Concurrent Status Transitions**

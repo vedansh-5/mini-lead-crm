@@ -1,4 +1,3 @@
-// This layer handles all direct interactions with PostgreSQL using GORM.
 package repository
 
 import (

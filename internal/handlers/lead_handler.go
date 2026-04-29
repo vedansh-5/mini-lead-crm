@@ -1,4 +1,3 @@
-// This file maps HTTP routes (like POST /leads) to Go functions using the Gin framework.
 package handlers
 
 import (

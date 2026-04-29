@@ -1,4 +1,3 @@
-// This is where the business logic lives, including the state machine rules and bulk operations.
 package services
 
 import (
